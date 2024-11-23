@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Management</title>
+</head>
+<body>
+  <h1>Data Pasien</h1>
+  <a href="/add">Tambah Data</a>
+  <ul>
+    <% dbData.forEach((item) => { %>
+      <li>
+        <%= item.name %> - <%= item.age %> - <%= item.diagnosis %>
+        <form action="/delete/<%= item.id %>" method="POST" style="display:inline;">
+          <button type="submit">Hapus</button>
+        </form>
+        <a href="/edit/<%= item.id %>">Edit</a>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>

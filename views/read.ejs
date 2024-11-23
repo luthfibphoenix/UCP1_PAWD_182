@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Pasien</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between; /* Aligns content to the sides */
+      align-items: center; /* Vertically centers the content */
+    }
+    h1 {
+      margin: 0;
+    }
+    .greeting {
+      font-size: 16px;
+    }
+    .logout {
+      font-size: 14px;
+    }
+    .logout a {
+      background-color: #28a745; /* Green background */
+      color: white; /* White text */
+      padding: 6px 12px; /* Padding for button */
+      text-decoration: none; /* Remove underline */
+      border-radius: 5px; /* Rounded corners */
+    }
+    .logout a:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c82333;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+    footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="greeting">Selamat datang, <%= user.username %></div>
+    <div class="logout"><a href="/logout">Logout</a></div>
+  </header>
+
+  <div style="text-align: center; margin-bottom: 20px;">
+    <a href="/add" style="background-color: #28a745; color: rgb(255, 255, 255); padding: 10px 20px; border-radius: 5px;">Tambah Data Pasien</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Umur</th>
+        <th>Diagnosis</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% dbData.forEach((item) => { %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.age %></td>
+          <td><%= item.diagnosis %></td>
+          <td class="actions">
+            <a href="/edit/<%= item.id %>">Edit</a>
+            <form action="/delete/<%= item.id %>" method="POST" style="display:inline;">
+              <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                Hapus
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <footer>
+    <p>&copy; 2024 Data Pasien Management. All rights reserved.</p>
+  </footer>
+</body>
+</html>

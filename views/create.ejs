@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #007bff;
+      margin-top: 20px;
+    }
+    .form-container {
+      width: 400px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    label {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .back-button {
+      background-color: #007bff;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+    .form-footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .form-footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tambah Data Pasien</h1>
+
+  <div class="form-container">
+    <form action="/add" method="POST">
+      <label for="name">Nama:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="age">Umur:</label>
+      <input type="number" id="age" name="age" required>
+
+      <label for="diagnosis">Diagnosis:</label>
+      <input type="text" id="diagnosis" name="diagnosis" required>
+
+      <button type="submit">Simpan</button>
+    </form>
+
+    <!-- Back Button -->
+    <form action="/" method="GET">
+      <button type="submit" class="back-button">Kembali</button>
+    </form>
+  </div>
+
+</body>
+</html>
