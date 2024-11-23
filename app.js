@@ -6,7 +6,7 @@ const session = require('express-session');
 
 const app = express();
 const PORT = 3002;
-
+ 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
